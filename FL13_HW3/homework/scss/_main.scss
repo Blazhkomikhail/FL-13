@@ -1,0 +1,264 @@
+@mixin logo {
+	display: flex;
+	align-items: center;
+	margin-left: 130px;
+	font-weight: 700;
+}
+
+@mixin links {
+	color: #fff;
+	font-size: 1.1em;
+}
+
+@mixin button {
+	color: #fff;
+	background-color: $button-background-color;
+	border: 1px solid $button-background-color;
+	width: 110px;
+	height: 40px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: $main-font-family;
+	color: $main-font-color;
+	background-color: $body-background-color;
+}
+
+.header-wrap {
+	background-image: $header-background-image;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 90vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-bottom-right-radius: 400px 200px;
+	
+	.landing-logo {
+		@include logo;
+		margin-top: 10px;
+		
+		img {
+			height: 45px;
+		}
+
+		p { 
+			margin-left: 20px;
+			font-size: 1.2em;
+		}
+
+		span {
+			display: block;
+			text-align: center;
+			font-size: 0.5em;
+		}
+	}
+
+	.header_heading {
+		margin: 20px 0px 30px 130px;
+		font-size: 3.5em;
+		max-width: 40vw;
+		line-height: 1;
+		font-weight: 800;
+		z-index: 1;
+
+		&::before {
+			content: '';
+			background-color: $highligtWordsColor;
+			width: 235px;
+			height: 38px;
+			display: block;
+			opacity: 0.8;
+			position: absolute;
+			z-index: -1;
+			top: 178px;
+		}
+	}
+
+	.header_text {
+		margin: 0 0 40px 130px;
+		max-width: 38vw;
+		font-family: $section-card-text-font-family;
+		font-size: 0.9em;
+	}
+
+	div:last-child {
+		@extend .header_text;
+		display: flex;
+
+		.login {
+			margin-left: 120px;
+			@include links;
+		}
+	}
+
+	.header_button {
+		@include button;
+
+		&:hover {
+			cursor: pointer;
+			background-color: darken($button-background-color, 10%);
+			border: 1px solid darken($button-background-color, 10%);
+			color: #ccc;
+		}
+	}
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
+	.section_text {
+		font-size: 2em;
+    	margin: 25px;
+    	font-weight: 600;
+
+    	&::before {
+			content: '';
+		    background-color: $highligtWordsColor;
+		    width: 143px;
+		    height: 33px;
+		    display: block;
+		    position: relative;
+		    top: 35px;
+		    z-index: -1;
+		    left: 166px;
+		}
+	}
+	
+	.section_card_wrap {
+		margin-bottom: 100px;
+	}
+
+	.section_card {
+		max-width: 55vw;
+		display: flex;
+		margin-bottom: 30px;
+		background-color: $card-background-color;
+		color: #BFC2C7;
+		border-radius: 5px;
+		padding: 15px;
+
+		.section_card_heading {
+			color: #fff;
+			text-align: center;
+			font-size: 1.2em;
+			margin: 10px;
+		}
+		.section_card_text {
+			margin: 10px 20px;
+			font-family: $section-card-text-font-family;
+			font-size: 0.9em;
+		}
+
+		.section_link {
+			@include links;
+			color: #BFC2C7;
+			font-size: 0.9em;
+		}
+	}
+
+	.section_card_right_container {
+		@extend .section;
+		padding: 15px 30px;
+		text-align: justify;		
+	}
+
+	.section_banner {
+		width: 55vw;
+		height: 120px;
+		border-radius: 5px;
+		display: flex;
+		position: absolute;
+    	bottom: -65px;
+		justify-content: space-around;
+		background: linear-gradient(to right, $banner-gradient-from, $banner-gradient-to);
+
+		.section_banner_text_wrap {
+			position: relative;
+    		z-index: 1;
+		}
+
+		.section_banner_heading {
+			font-size: 1.3em;
+			font-weight: 600;
+
+			&::before {
+				content: '';
+				background-color: $highligtWordsColor;
+				width: 43px;
+				height: 33px;
+				display: block;
+				position: absolute;
+				z-index: -1;
+				left: 82px;
+				top:13px;
+			}
+		}
+
+		.section_banner_text {
+			font-size: 0.9em;
+			color: #BFC2C7;
+		}
+
+		.section_banner_button{
+			@include button;
+			align-self: center;
+
+			&:hover {
+				cursor: pointer;
+				background-color: darken($button-background-color, 10%);
+				border: 1px solid darken($button-background-color, 10%);
+				color: #ccc;
+			}
+		
+		}
+	}
+}
+
+.footer-wrap {
+	background-color: $card-background-color;
+	color: #BFC2C7;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 240px;
+
+	.footer_logo {
+		@include logo;
+		margin-top: 60px;
+
+		img {
+			height: 45px;
+		}
+
+		p { 
+			margin-left: 20px;
+			font-size: 1.2em;
+		}
+
+		span {
+			display: block;
+			text-align: center;
+			font-size: 0.5em;
+		}
+	}
+
+	.footer_text {
+		max-width: 250px;
+		font-size: 0.8em;
+		margin-top: 70px;
+	}
+
+	.footer-cr {
+		margin-top: 60px;
+		margin-right: 130px;
+		font-size: 0.8em;
+	}
+}
+

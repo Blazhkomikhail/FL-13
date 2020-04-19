@@ -1,0 +1,11 @@
+$fonts-family: ('Source': 'Source Sans Pro',  'Hind': 'Hind', 'Fresca': 'Fresca' );
+$header-background-image: url(../img/m-h-day.jpg);
+$card-background-color: #21232E;
+$body-background-color: #fff;
+$main-font-color: #2C2F3C;
+$banner-gradient-from: #64940F;
+$banner-gradient-to: #305FCB;
+$button-background-color: #699900;
+$main-font-family: map-get($fonts-family, 'Source'), sans-serif;
+$section-card-text-font-family: map-get($fonts-family, 'Hind'), sans-serif;
+$highligtWordsColor: #14A0C7;

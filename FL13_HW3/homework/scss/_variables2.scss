@@ -1,0 +1,11 @@
+$fonts-family: ('Source': 'Source Sans Pro',  'Hind': 'Hind', 'Fresca': 'Fresca' );
+$header-background-image: url(../img/m-h-night.jpg);
+$card-background-color: #3B3F50;
+$body-background-color: #21232E;
+$main-font-color: #fff;
+$banner-gradient-from: #DBA008;
+$banner-gradient-to: #9A384C;
+$button-background-color: #DDA700; 
+$main-font-family: map-get($fonts-family, 'Source'), sans-serif;
+$section-card-text-font-family: map-get($fonts-family, 'Fresca'), sans-serif;
+$highligtWordsColor: #FF4E33;
