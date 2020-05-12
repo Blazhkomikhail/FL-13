@@ -1,0 +1,50 @@
+#root {
+	position: relative;
+}
+
+li {
+	list-style-type: none;
+}
+/*li:hover{
+	cursor: pointer;
+	background-color: #EBECF0;
+}*/
+.folder {
+}
+.folderIcon {
+	color: rgb(237,188,11);
+}
+.fileIcon {
+	color: rgb(175,175,175);
+}
+.empty-folder-node {
+	font-style: italic;
+}
+.hidden {
+	display: none;
+}
+.folder:hover {
+	cursor: pointer;
+}
+.context-menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: fixed;
+	background: rgb(255,255,255);
+	border-radius: 3px;
+	border: 1px solid rgb(230,230,230);
+	display: none;
+	width: 100px;
+	height: 50px;
+}
+.context-menu.active{
+	display: block;
+}
+.context-menu li {
+
+}
+.context-menu li:hover {
+	cursor: pointer;
+	background: rgb(200,200,200);
+}
