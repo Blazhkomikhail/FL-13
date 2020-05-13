@@ -142,21 +142,30 @@ function addMenuEvents(target) {
   function removeEvent() {
     const IS_TARGET_FOLDER = target.classList.contains('folder');
     const IS_TARGET_EMPTY_FOLDER = target.childNodes.length <= NODES_COUNT && IS_TARGET_FOLDER;
+    const IS_ICON_FOLDER = target.closest('li').classList.contains('folder');
+    const IS_ICON_EMPTY_FOLDER = target.closest('li').childNodes.length <= NODES_COUNT && IS_ICON_FOLDER;
     // const IS_TARGET_FIRST_DEPTH_CHILD = target.classList.contains('first-depth-child');
     // const IS_TARGER_HAS_SIBLINGS = target.nextSibling || target.previousSibling;
-      if ( !IS_TARGET_EMPTY_FOLDER ) {
-        target.closest('li').remove();
-      } else if ( IS_TARGET_EMPTY_FOLDER ) {
-        if ( target.nextSibling ) {
-          target.nextSibling.remove();
+      if ( IS_TARGET_EMPTY_FOLDER ) {
+        if (target.nextSibling) {
+          deleteNode(target.nextSibling);
         }
-        target.closest('li').remove();
+        deleteNode( target.closest('li') );
+      } else if ( IS_TARGET_ICON && IS_ICON_EMPTY_FOLDER ) {
+          if (target.closest('li').nextSibling) {
+            deleteNode(target.closest('li').nextSibling);
+          }
+          deleteNode( target.closest('li') );
       } else if ( IS_TARGET_ICON ) {
-        target.closest('li').remove();
+        deleteNode( target.closest('li') );
       } else {
-        target.remove();
+        deleteNode(target);
       }
   }
+}
+
+function deleteNode(node){
+  node.remove();
 }
 
 function hideShowElements(event) {

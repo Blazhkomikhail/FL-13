@@ -1,14 +1,9 @@
 #root {
 	position: relative;
 }
-
 li {
 	list-style-type: none;
 }
-/*li:hover{
-	cursor: pointer;
-	background-color: #EBECF0;
-}*/
 .folder {
 }
 .folderIcon {
