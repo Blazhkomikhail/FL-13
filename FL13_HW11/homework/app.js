@@ -59,6 +59,9 @@ ROOT_NODE.addEventListener('click', hideShowElements);
 ROOT_NODE.addEventListener('click', changeFolderView);
 ROOT_NODE.addEventListener('contextmenu', showContextMenu);
 ROOT_NODE.addEventListener('click', hideContextMenu);
+ROOT_NODE.addEventListener('mouseover', addHowerEffect);
+ROOT_NODE.addEventListener('mouseout', removeHowerEffect);
+
 
 document.addEventListener('DOMContentLoaded', () => {
   buildTree(data, ROOT_NODE);
@@ -85,6 +88,7 @@ function buildTree(data, renderNode){
         }
       } else {
         headerNode.innerHTML = FILE_ICON + item.title;
+        headerNode.classList.add('file');
       }
       mainWrap.innerHTML += headerNode.outerHTML;
   }
@@ -145,7 +149,6 @@ function addMenuEvents(target) {
     const IS_ICON_FOLDER = target.closest('li').classList.contains('folder');
     const IS_ICON_EMPTY_FOLDER = target.closest('li').childNodes.length <= NODES_COUNT && IS_ICON_FOLDER;
     // const IS_TARGET_FIRST_DEPTH_CHILD = target.classList.contains('first-depth-child');
-    // const IS_TARGER_HAS_SIBLINGS = target.nextSibling || target.previousSibling;
       if ( IS_TARGET_EMPTY_FOLDER ) {
         if (target.nextSibling) {
           deleteNode(target.nextSibling);
@@ -157,7 +160,8 @@ function addMenuEvents(target) {
           }
           deleteNode( target.closest('li') );
       } else if ( IS_TARGET_ICON ) {
-        deleteNode( target.closest('li') );
+        let currentTarget = target.closest('li')
+        deleteNode( currentTarget );
       } else {
         deleteNode(target);
       }
@@ -190,6 +194,16 @@ function changeFolderView(event) {
     } else if ( isTargetFolder && !isTargetClosed ){
       TARGET.firstChild.innerText = 'folder'; 
     }
+}
+
+function addHowerEffect(e) {
+  if ( e.target.classList.contains('folder') || e.target.classList.contains('file')) {
+    e.target.classList.add('hover');
+  }
+}
+
+function removeHowerEffect(e) {
+  e.target.classList.remove('hover');
 }
 
 function showfirstDepthNodes() {

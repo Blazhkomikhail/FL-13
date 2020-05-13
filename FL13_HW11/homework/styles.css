@@ -3,9 +3,17 @@
 }
 li {
 	list-style-type: none;
+	position: relative;
 }
-.folder {
+.hover:hover::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 27px;
+	opacity: .3;
+	background-color: rgb(59,59,59);
 }
+
 .folderIcon {
 	color: rgb(237,188,11);
 }
@@ -18,12 +26,13 @@ li {
 .hidden {
 	display: none;
 }
-.folder:hover {
+.folder:hover,
+.file:hover {
 	cursor: pointer;
 }
 .context-menu {
 	margin: 0;
-	padding: 0;
+	padding: 5px;
 	list-style: none;
 	position: fixed;
 	background: rgb(255,255,255);
@@ -32,14 +41,16 @@ li {
 	display: none;
 	width: 100px;
 	height: 50px;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.context-menu li:hover {
+	background-color: rgb(230,230,230);
 }
 .context-menu.active{
 	display: block;
 }
 .context-menu li {
 
-}
-.context-menu li:hover {
-	cursor: pointer;
-	background: rgb(200,200,200);
 }
