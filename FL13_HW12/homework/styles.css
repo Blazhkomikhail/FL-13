@@ -1,0 +1,42 @@
+#root {
+    display: flex;
+    justify-content: space-around;
+}
+
+.static-section-wrap {
+	width: 50vw;
+	padding: 0 50px;
+}
+
+.left-section {
+    width: 50vw;
+}
+
+.static-section-img,
+.preview-img-wrap {
+	max-width: 167px;
+	height: 250px;
+	position: relative;
+    overflow: hidden;
+}
+
+.static-section-img img,
+.preview-img-wrap img {
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"] {
+    padding: 5px;
+}
