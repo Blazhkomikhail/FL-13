@@ -1,0 +1,35 @@
+@use "../_variables.scss";
+
+.info {
+	color: _variables.$info-bar-text-color;
+	font-size: 15px;
+	line-height: 25px;
+
+	.info__dot {
+		display: inline-block;
+		margin: 0 7px;
+		border: 1px solid _variables.$info-bar-text-color;
+		border-radius: 50%;
+		width: 3px;
+		height: 3px;
+		vertical-align: middle;
+		background-color: _variables.$info-bar-text-color;
+	}
+
+	.info__comments-icon {
+		background-image: url('../img/UI-Kit-module-8/atoms/icon/a-icon-comment.svg'); 
+	    width: 14px; 
+	    height: 13px; 
+	    display: inline-block;
+	    border: none;
+	}
+
+	.info__stars {
+		margin: 0 0 0 9px;
+	}
+
+	.info__star {
+		height: 14px;
+  		width: 14px;
+	}
+}
