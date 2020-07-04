@@ -1,0 +1,69 @@
+@use "_variables";
+@import "main.blocks/header.scss";
+@import "main.blocks/footer.scss";
+@import "common.blocks/info_bar.scss";
+@import "common.blocks/button.scss";
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	color: _variables.$font-color;
+	font-family: _variables.$font;
+	height: 100%;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 auto;
+}
+
+
+.form {
+	max-width: 900px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.post-form__item {
+	min-width: 215px;
+}
+
+.main {
+	flex: 1 0 auto;
+}
+
+.main__post-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px 0 20px 0;
+
+	h2 {
+		margin-bottom: 20px;
+	}
+}
+
+.button--newpostpage-submit {
+	margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+	.post-form__item--quote {
+		width: 445px;
+	}	
+}
+
+@media (max-width: 460px) {
+	.form {
+		justify-content: center;
+	}	
+}
