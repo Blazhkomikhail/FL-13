@@ -5,7 +5,7 @@
 	font-size: 15px;
 	line-height: 25px;
 
-	.info__dot {
+	&__dot {
 		display: inline-block;
 		margin: 0 7px;
 		border: 1px solid _variables.$info-bar-text-color;
@@ -16,7 +16,7 @@
 		background-color: _variables.$info-bar-text-color;
 	}
 
-	.info__comments-icon {
+	&__comments-icon {
 		background-image: url('../img/UI-Kit-module-8/atoms/icon/a-icon-comment.svg'); 
 	    width: 14px; 
 	    height: 13px; 
@@ -24,11 +24,11 @@
 	    border: none;
 	}
 
-	.info__stars {
+	&__stars {
 		margin: 0 0 0 9px;
 	}
 
-	.info__star {
+	&__star {
 		height: 14px;
   		width: 14px;
 	}

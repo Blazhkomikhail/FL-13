@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/newpostpage.css">
+    <title>New post</title>
+</head>
+<body>
+    <div class="wrapper container-fluid p-0">   
+        <div class="content">
+            <header class="title-section__header container-lg px-4 px-lg-0 header">
+                <nav class="header__nav-bar navbar navbar-expand-lg navbar-light nav-bar p-0">
+                    <a class="nav-bar__logo navbar-brand" href="#">BlogWorld</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
+                    <ul class="nav-bar__nav flex-lg-row justify-content-md-between nav p-0">
+                        <li class="nav__item nav__item--not-active">
+                            <a href="file:///D:/FL-13/Markup_task/Homework/index.html" class="nav-link item__link p-0">Home</a>
+                        </li>
+                        <li class="nav__item nav__item--not-active">
+                            <a href="#portfolio" class="nav-link item__link p-0">Portfolio</a>
+                        </li>
+                        <li class="nav__item nav__item--not-active">
+                            <a href="file:///D:/FL-13/Markup_task/Homework/blog.html" class="nav-link item__link p-0">Blog</a>
+                        </li>
+                        <li class="nav__item nav__item--not-active">
+                            <a href="#" class="nav-link item__link p-0">Pages</a>
+                        </li>
+                        <li class="nav__item nav__item--not-active">
+                            <a href="#about" class="nav-link item__link p-0">About</a>
+                        </li>
+                        <li class="nav__item nav__item--not-active">
+                            <a href="#contact" class="nav-link item__link p-0">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                </nav>
+            </header>
+            <section class="main container-fluid bg-light">
+                <div class="main__post-form post-form container-lg">
+                    <h2>Add your content</h2>
+                    <form class="form">
+                        <div class="post-form__item post-form__item--type form-group">
+                            <label for="type">Select post type</label>
+                            <select class="custom-select" id="type">
+                                <option selected>Choose...</option>
+                                <option>Video</option>
+                                <option>Audio</option>
+                                <option>Picture</option>
+                                <option>Text</option>
+                            </select>
+                        </div>
+                        <div class="post-form__item post-form__item--image form-group">
+                            <label for="image">Choose image(url)</label>
+                            <input type="url" class="form-control" id="image">
+                        </div>
+                        <div class="post-form__item post-form__item--title form-group">
+                            <label for="title" required>Title</label>
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                        <div class="post-form__item post-form__item--author form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control" id="author">
+                        </div>
+                        <div class="post-form__item post-form__item--description form-group">
+                            <label for="description">Text</label>
+                            <textarea id="description" class="form-control" cols="118" rows="5" placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <div class="post-form__item post-form__item--quote form-group">
+                            <label for="quote">Quote</label>
+                            <input type="text" class="form-control" id="quote">
+                        </div>
+
+                        <button type="submit" id="submit-button" class="button button-bk button--newpostpage-submit">Create post</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer container-fluid bg-light">
+            <div class="container footer__body p-0">
+
+                <div class="footer__icons icons">
+                    <span class="footer__icon footer__icon--facebook">
+                        <img src="img/UI-Kit-module-8/atoms/icon/a-icon-facebook.svg" alt="Facebook icon" class="img-thumbnail p-0">
+                    </span>
+                    <span class="footer__icon footer__icon--instagram">
+                            <img src="img/UI-Kit-module-8/atoms/icon/a-icon-instagram.svg" alt="Instagram icon" class="img-thumbnail p-0">
+                    </span>
+                    <span class="footer__icon footer__icon--dribble">
+                        <img src="img/UI-Kit-module-8/atoms/icon/a-icon-dribbble.svg" alt="Dribble icon" class="img-thumbnail p-0">
+                    </span>
+                </div>
+
+                <div class="footer__title">
+                    <span>BlogWorld</span>
+                </div>
+
+                <div class="footer__copyright">&copy; 2019 All Rights Reserved.</div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="js/newpost.js"></script>
+</body>
+</html>
