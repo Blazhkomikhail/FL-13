@@ -853,10 +853,6 @@ body {
 		height: 300px;
 	}
 
-	#navbarToggler ul {
-		min-width: 100px;
-	}
-
 	.title-section__main-idea {
 		height: 440px;
 		margin-top: 40px;
@@ -939,10 +935,19 @@ body {
 		flex-direction: column;
 		align-items: center;
 	}
+
+	.inform__bar {
+		display: none;
+	}
+
+	#new-post-btn {
+		margin-right: 37px;
+	}
 }
 
-@media (max-width: 992px) {
-	.infom__bar {
-		display: none;
+@media (max-width: 768px) {
+
+	#navbarToggler ul {
+		min-width: 100px;
 	}
 }

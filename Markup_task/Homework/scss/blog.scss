@@ -126,9 +126,13 @@ body {
   					width: 72px;
 				}
 			}
+
+			img {
+				height: 100%;
+			}
 		}
 
-		&--description {
+		&--text {
 			background-color: _variables.$post-background;
 			position: relative;
 			margin: 0 0 60px 0;
@@ -174,19 +178,24 @@ body {
 			line-height: 26px;
 		}
 
+		.content__corner-icon {
+			display: none;
+		}
+
 		&__text {
 			margin: 0 0 30px 0;
 			max-width: 460px;
 			font-size: 17px;
 			letter-spacing: 0;
 			line-height: 26px;
+			overflow-wrap: break-word;
 
 			&--description {
 				max-width: 1033px;
 			}
 		}
 
-		&--description {
+		&--text {
 			padding-left: 27px;
 		}
 
@@ -208,6 +217,34 @@ body {
 			position: absolute;
 			top: -3px;
 			right: -3px;
+
+			&--video {
+				background: url('../img/UI-Kit-module-8/atoms/icon/a-icon-playmini.svg');
+				background-position: center;
+				background-size: 40px;
+				background-repeat: no-repeat;
+			}
+
+			&--audio {
+				background: url('../img/UI-Kit-module-8/atoms/icon/a-icon-melody.svg');
+				background-position: center;
+				background-size: 40px;
+				background-repeat: no-repeat;
+			}
+
+			&--picture {
+				background: url('../img/UI-Kit-module-8/atoms/icon/a-icon-picture.svg');
+				background-position: center;
+				background-size: 40px;
+				background-repeat: no-repeat;
+			}
+
+			&--text {
+				background: url('../img/UI-Kit-module-8/atoms/icon/a-icon-text.svg');
+				background-position: center;
+				background-size: 40px;
+				background-repeat: no-repeat;
+			}
 		}
 	}
 }
@@ -226,34 +263,63 @@ body {
 		display: none;
 	}
 
+	.title-section__headline {
+		margin: 0 auto;
+		margin-top: 30px;
+	}
+
+	.info__stars {
+		display: block;
+		margin-left: 0;
+	}
 }
 
-@media (max-width: 992px) {
+@media (max-width: 990px) {
 
 	#navbarToggler ul {
 		min-width: 100px;
 	}
+
+	#new-post-btn {
+		margin-right: 37px;
+	}
+
+	.info__stars {
+		display: inline;
+	}
+
 }
 
 @media (max-width: 768px) {
-	.posts .content__corner-icon {
-		top: 50%;
+
+	.post > .content__corner-icon {
+		display: none;
 	}
 
-	.post--description .content__corner-icon {
-		top: -3px;
+	#corner-icon {
+		display: block;
+		top: 0;
 	}
 }
 
-@media (max-width: 580px) {
-	.posts .content__corner-icon {
-		display: none;
-	}
+@media (max-width: 576px) {
 
 	.posts .content__info-wrap,
 	.posts .content__headline {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.post .post__content {
+		padding: 15px; 
+	}
+
+	.posts .post__image-wrap--video::before {
+		right: 39%;
+	}
+
+	#corner-icon {
+		display: none;
 	}
 }
