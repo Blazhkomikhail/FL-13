@@ -21,7 +21,7 @@ const renderArticle = ({type, image, title, author, date, description}) => {
 		} else {
 			return `
 			<div class="post__image-wrap ${type === 'Video' ? 'post__image-wrap--video': ''} col-lg-6 p-0">
-				<img src=${image || 'https://bit.ly/31wy1Q1'} class="post__image card-img" alt="${type || ''} Picture">
+				<img src=${image || 'https://bit.ly/3gssa2f'} class="post__image card-img" alt="${type || ''} Picture">
 			</div>
 			`
 		}
@@ -86,6 +86,17 @@ const renderContent = articles => {
 	})
 };
 
+const checkImages = () => {
+	const images = document.querySelectorAll('img');
+	images.forEach( image => {
+		image.addEventListener('error', handleError);
+	})
+
+	function handleError(e) {
+		e.target.src = 'https://bit.ly/3gssa2f';
+	}
+}
+
 const fetchArticles = () => {
 	const mainURL = 'http://localhost:3000';
 
@@ -104,21 +115,26 @@ const fetchArticles = () => {
 
 			throw new Error(parsedArticles.message)
 		})
-		.then(articles => renderContent(articles))
+		.then(articles => {
+			renderContent(articles);
+			checkImages();
+		})
 		.catch(error => {
 			console.log(error.message);
-			window.location.href = '../homework/index.html';
+			// window.location.href = '../homework/index.html';
 		})
 };
 
 const main = () => {
     fetchArticles();
-
+    
 	const newPostButton = document.getElementById('new-post-btn');
+	
+	newPostButton.addEventListener('click', openNewPostPage);
+
 	function openNewPostPage() {
 		window.location.href = './newpostpage.html';
 	}
-	newPostButton.addEventListener('click', openNewPostPage);
 }
 
 document.addEventListener('DOMContentLoaded', main);
