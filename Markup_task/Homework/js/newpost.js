@@ -46,7 +46,7 @@ const checkType = (postType) => {
 
 const createDate = (date) => {
 	const monthArr = ['jan','feb','mar','apr','jun','jul','aug','sep','oct','dec'];
-	return `${date.getDate()} ${monthArr[date.getMonth()]}, ${date.getFullYear()}`;
+	return `${date.getDate()} ${monthArr[date.getMonth() - 1]}, ${date.getFullYear()}`;
 }
 
 const onSubmit = event => {
@@ -70,7 +70,7 @@ const onSubmit = event => {
 Title must have more than 2 and less than 20 characters. 
 First letter must be capital.`);
 	} else if ( !checkType(type) ) {
-		alert('Choose the post type, please.')
+		alert('Choose the post type, please.');
 	} else {
 		const submitButton = document.getElementById('submit-button');
 		submitButton.setAttribute('disabled', '');
