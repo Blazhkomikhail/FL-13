@@ -21,7 +21,7 @@ const renderArticle = ({type, image, title, author, date, description}) => {
 		} else {
 			return `
 			<div class="post__image-wrap ${type === 'Video' ? 'post__image-wrap--video': ''} col-lg-6 p-0">
-				<img src=${image || 'https://bit.ly/3gssa2f'} class="post__image card-img" alt="${type || ''} Picture">
+				<img src=${image || 'https://bit.ly/31wy1Q1'} class="post__image card-img" alt="${type || ''} Picture">
 			</div>
 			`
 		}
@@ -121,20 +121,18 @@ const fetchArticles = () => {
 		})
 		.catch(error => {
 			console.log(error.message);
-			// window.location.href = '../homework/index.html';
+			window.location.href = '../homework/index.html';
 		})
 };
 
 const main = () => {
     fetchArticles();
-    
 	const newPostButton = document.getElementById('new-post-btn');
-	
-	newPostButton.addEventListener('click', openNewPostPage);
-
 	function openNewPostPage() {
 		window.location.href = './newpostpage.html';
 	}
+	newPostButton.addEventListener('click', openNewPostPage);
+
 }
 
 document.addEventListener('DOMContentLoaded', main);

@@ -73,23 +73,19 @@
 
 @mixin Gallery-button-arow-left {
 	background: url('../img/UI-Kit-module-8/atoms/icon/a-icon-arrow.svg');
-	background-size: contain;
+	background-size: 20px;
 	background-repeat: no-repeat;
 	background-position: center;
 	transform: rotate(90deg);
-	width: 20px;
-	height: 20px;
 }
 
 @mixin Gallery-button-arow-right {
 	background: url('../img/UI-Kit-module-8/atoms/icon/a-icon-arrow.svg');
-	background-size: contain;
+	background-size: 20px;
 	background-repeat: no-repeat;
 	background-position: center;
 	transform: rotate(-90deg);
 	margin-left: 2px;
-	width: 20px;
-	height: 20px;
 }
 
 html,
@@ -109,24 +105,6 @@ body {
 
 .content {
 	flex: 1 0 auto;
-}
-
-.gallery-button {
-
-	@include Gallery-button;
-	
-	&:hover {
-		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
-		cursor: pointer;
-	}
-
-	.left-button__arrow {
-		@include Gallery-button-arow-left;
-	}
-
-	.right-button__arrow {
-		@include Gallery-button-arow-right;
-	}
 }
 
 .title-section {
@@ -409,88 +387,160 @@ body {
   		@include Subtitle-styles;
   		margin-top: 15px;
 	}
-		
-	&__items {
-		justify-content: space-between;
-		margin: 0 0 38px 0;
-	}
 
-	.item:first-child {
-		margin-right: 6px;
-	}
-
-	.item {
-		border-radius: 5px;
+	.slider {
 		position: relative;
-		background-size: cover;
-		background-position: center;
+  		overflow: hidden;
 
-		&:hover {
-			cursor: pointer;
+		&__wrapper{
+			display: flex;
+			justify-content: space-between;
+			margin: 0 0 40px 0;
+			transition: transform 0.6s ease;
+			max-height: 244px
 		}
 
-		&__hidden-menu {
-			height: 60px;
-	  		width: 101px;
-	  		padding: 0 8px 0 8px;
-	  		background-color: rgba(0,0,0,0.5);
-	  		border-radius: 6px;
-	  		align-items: center;
-	  		justify-content: space-around;
-	  		position: absolute;
-	  		display: none;
-	  		bottom: 0;
-	  		right: 0;
-		}	
+		.item {
+			flex: 0 0 33.333%;
+			max-width: 33.333%;
+			display: flex;
+			justify-content: center;
 
-		&-text {
-			text-align: center;
+			&:hover {
+				cursor: pointer;
+			}
+
+			.item__content-wrapper {
+				border-radius: 5px;
+				position: relative;
+				background-size: cover;
+				background-position: center;
+				height: 100%;
+				width: 100%;
+				max-width: 360px;
+			}
+
+			&__hidden-menu {
+				height: 60px;
+		  		width: 101px;
+		  		padding: 0 8px 0 8px;
+		  		background-color: rgba(0,0,0,0.5);
+		  		border-radius: 6px;
+		  		align-items: center;
+		  		justify-content: space-around;
+		  		position: absolute;
+		  		display: none;
+		  		bottom: 0;
+		  		right: 0;
+			}	
+
+			&-text {
+				text-align: center;
+			}
+
+			&-text__title {
+				color: rgb(255,255,255);
+			  	font-size: 20px;
+			  	font-weight: bold;
+			  	letter-spacing: 0;
+			  	line-height: 28px;
+			  	margin: 100px 0 0 0;
+			}
+
+			&-text__subtitle {
+				color: rgb(255,255,255);
+			  	font-size: 15px;
+			  	font-weight: 300;
+			  	letter-spacing: 0;
+			}
 		}
 
-		&-text__title {
-			color: rgb(255,255,255);
-		  	font-size: 20px;
-		  	font-weight: bold;
-		  	letter-spacing: 0;
-		  	line-height: 28px;
-		  	margin: 100px 0 0 0;
+		&__item:hover .item__hidden-menu{
+			display: flex;
 		}
 
-		&-text__subtitle {
-			color: rgb(255,255,255);
-		  	font-size: 15px;
-		  	font-weight: 300;
-		  	letter-spacing: 0;
+		&__item--ocean .item__content-wrapper {
+			background: url('../img/home-page/Block-1/bg-img1.png');
 		}
-	}
 
-	&__item:hover .item__hidden-menu{
-		display: flex;
-	}
-
-	&__item--ocean {
-		background: url('../img/home-page/Block-1/bg-img1.png');
-	}
-
-	&__item--city {
-		background: url('../img/home-page/Block-2/bg-img2.png');
-	}
+		&__item--city .item__content-wrapper{
+			background: url('../img/home-page/Block-2/bg-img2.png');
+		}
+		
+		&__item--mountains .item__content-wrapper{
+			background: url('../img/home-page/Block-3/bg-img-3.png');
+		}
 	
-	&__item--mountains {
-		background: url('../img/home-page/Block-3/bg-img-3.png');
+		&__buttons-wrap {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		&__buttons-body {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 8px 0 9px;
+			margin-bottom: 40px;
+			min-width: 378px;
+		}
+
+		.slider__speed-contorller {
+			position: absolute;
+			right: 25px;
+			font-size: .7em;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.up-arrow,
+			.down-arrow {
+				border: solid #000;
+    			border-width: 0 2px 2px 0;
+    			display: inline-block;
+    			padding: 3px;
+
+    			&:hover {
+    				cursor: pointer;
+    			}
+			}
+
+			.up-arrow {
+    			transform: rotate(-135deg);
+    			-webkit-transform: rotate(-135deg);
+    			margin: 0 0 -2px 5px;
+				
+			}
+
+			.down-arrow {
+				transform: rotate(45deg);
+    			-webkit-transform: rotate(45deg);
+    			margin: 0 5px 2px 0;
+			}
+		}
 	}
 
-	&__buttons-wrap {
+	&__see-more {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		justify-content: center;
+	}
+}
+
+.slider__control--left {
+		@include Gallery-button-arow-left;
 	}
 
-	&__buttons-body {
-		display: flex;
-		justify-content: space-between; 
-		padding: 0 8px 0 9px;
-		margin-bottom: 40px;
+.slider__control--right {
+		@include Gallery-button-arow-right;
+}
+
+.gallery-button {
+
+	@include Gallery-button;
+	
+	&:hover {
+		box-shadow: 0 1px 6px 0 rgba(0,0,0,0.5);
+		cursor: pointer;
 	}
 }
 
@@ -498,9 +548,9 @@ body {
 	background: url('../img/home-page/Group-4/Bg-testimonial.png');
 	background-position: center;
 	background-size: cover;
-	padding: 80px 0 0 0;
+	padding: 80px 0 20px 0;
 	margin: 0 0 80px 0;
-	height: 529px;
+	min-height: 529px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -521,19 +571,53 @@ body {
   		}
 	}
 
-	.gallery {
-		max-width: 710px;
+	&__slider {
+		position: relative;
+		overflow: hidden;
 		margin: 53px 0 0 0;
 		display: flex;
 		padding: 0;
-		justify-content: space-between;
 		align-items: center;
-		max-height: 265px;
 
-		&__card {
+		.slider__wrapper {
 			display: flex;
+			transition: transform 0.6s ease;
+			margin-left: 75px;
 		}
 
+		.slider__control {
+			position: absolute;
+
+			&--right {
+				right: 5px;
+			}
+		}
+
+		.slider__item {
+			display: flex;
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+	}
+
+	.start-stop-button {
+		margin-top: 15px;
+		line-height: 12px;
+		text-align: center;
+		border-radius: 50%;
+		font-size: .8em;
+		width: 45px;
+		height: 45px;
+		box-shadow: 0 0 7px rgba(0,0,0,.6);
+
+		&:hover {
+			box-shadow: 0 0 10px rgba(0,0,0,.7);
+		}
+	}
+
+
+	.gallery {
+		
 		&__text {
 			display: flex;
 			flex-direction: column;
@@ -760,12 +844,15 @@ body {
 	.about,
 	.posts,
 	.posts__cards,
-	.portfolio,
 	.contact__header,
 	.contact__content,
 	.map-content,
 	.footer__body {
 		max-width: 1160px;
+	}
+
+	.portfolio {
+		max-width: 1200px;
 	}
 }
 
@@ -823,14 +910,13 @@ body {
 		max-width: 360px;
 	}
 
-	.portfolio__item {
-		max-width: 360px;
-		min-height: 244px;
+	.testimonials__slider {
+		max-width: 720px;
+		padding-left: 5px;
+	}
 
-		&--mountains {
-			max-width: 366px;
-			height: 246px;
-		}
+	.slider__item {
+		min-height: 244px;
 	}
 
 	.posts__cards {
@@ -848,9 +934,18 @@ body {
 		align-items: center;
 	}
 
-	.portfolio__item {
-		max-width: 700px;
+	.portfolio__slider .slider__item {
+		flex: 0 0 50%;
+		min-width: 50%;
 		height: 300px;
+	}
+
+  .portfolio__slider {
+		width: 100%;
+		
+		.slider__wrapper {
+			max-height: 300px;
+		}
 	}
 
 	.title-section__main-idea {
@@ -873,38 +968,12 @@ body {
 		min-height: 400px;
 	}
 
-	.testimonials {
-		padding-top: 30px;
-		height: 700px;
-	}
-
 	.article {
 		margin-bottom: 30px;
 	}
 
 	.portfolio .portfolio__buttons-body {
 		margin-bottom: 0;
-	}
-
-	.gallery-button {
-		display: none;
-	}
-
-	.gallery__card,
-	.testimonials__gallery {
-		flex-direction: column;
-	}
-
-	.gallery__card .gallery__text {
-		padding-bottom: 30px;
-	}
-
-	.testimonials .gallery {
-		margin-top: 30px;
-	}
-
-	.gallery {
-		margin-top: 0;
 	}
 
 	.map__content,
@@ -936,7 +1005,49 @@ body {
 		align-items: center;
 	}
 
-	.inform__bar {
+  .inform__bar {
+		display: none;
+	}
+
+	#new-post-btn {
+		margin-right: 37px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	#navbarToggler ul {
+		min-width: 100px;
+	}
+
+	.portfolio .portfolio__slider .slider__item {
+		flex: 0 0 100%;
+		min-width: 100%;
+		height: 300px;
+
+		.item__content-wrapper {
+			max-width: 100%;
+		}
+	}
+	
+	.testimonials__slider {
+		max-width: 280px;
+
+		.slider__wrapper {
+			margin: 0 auto;
+		}
+
+		.slider__item {
+			display: block;
+			flex-direction: column;
+		}
+
+		.gallery__text {
+			padding: 30px;
+		}
+	}
+
+	.gallery-button {
 		display: none;
 	}
 
