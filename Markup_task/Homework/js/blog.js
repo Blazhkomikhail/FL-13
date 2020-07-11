@@ -86,6 +86,17 @@ const renderContent = articles => {
 	})
 };
 
+const checkImages = () => {
+	const images = document.querySelectorAll('img');
+	images.forEach( image => {
+		image.addEventListener('error', handleError);
+	})
+
+	function handleError(e) {
+		e.target.src = 'https://bit.ly/3gssa2f';
+	}
+}
+
 const fetchArticles = () => {
 	const mainURL = 'http://localhost:3000';
 
@@ -104,7 +115,10 @@ const fetchArticles = () => {
 
 			throw new Error(parsedArticles.message)
 		})
-		.then(articles => renderContent(articles))
+		.then(articles => {
+			renderContent(articles);
+			checkImages();
+		})
 		.catch(error => {
 			console.log(error.message);
 			window.location.href = '../homework/index.html';
@@ -113,12 +127,12 @@ const fetchArticles = () => {
 
 const main = () => {
     fetchArticles();
-
 	const newPostButton = document.getElementById('new-post-btn');
 	function openNewPostPage() {
 		window.location.href = './newpostpage.html';
 	}
 	newPostButton.addEventListener('click', openNewPostPage);
+
 }
 
 document.addEventListener('DOMContentLoaded', main);

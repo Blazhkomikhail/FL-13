@@ -5,7 +5,7 @@ const renderArticle = ({type, image, title, author, date, description, quote}) =
 		} else {
 			return `
 			<div class=" ${type === 'Video' ? 'post__image-wrap post__image-wrap--video p-0' : 'post__image-wrap p-0'}">
-				<img src=${image} alt="Post image">
+				<img src=${image || 'https://bit.ly/3gssa2f'} alt="Post image">
 			</div>
 			`
 		}
@@ -61,6 +61,17 @@ const renderArticle = ({type, image, title, author, date, description, quote}) =
 	`
 };
 
+const checkImages = () => {
+	const images = document.querySelectorAll('img');
+	images.forEach( image => {
+		image.addEventListener('error', handleError);
+	})
+
+	function handleError(e) {
+		e.target.src = 'https://bit.ly/3gssa2f';
+	}
+}
+
 const renderContent = article => {
   const container = document.getElementById('post-content');
   container.innerHTML = renderArticle(article)
@@ -82,10 +93,12 @@ const fetchArticle = () => {
 			if (response.ok) {
 				return parsedArticle;
 			}
-
-			throw new Error(parsedArticle.message)
+			throw new Error(parsedArticle.message);
 		})
-		.then(art => renderContent(art))
+		.then(art => {
+			renderContent(art);
+			checkImages();
+		})
 		.catch(error => {
 			console.log(error.message);
 			window.location.href = '../homework/index.html'

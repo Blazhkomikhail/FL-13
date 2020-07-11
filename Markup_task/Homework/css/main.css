@@ -1178,14 +1178,15 @@ body {
     min-width: 50%;
     height: 300px;
   }
-
+  
   .portfolio__slider {
     width: 100%;
   }
+  
   .portfolio__slider .slider__wrapper {
     max-height: 300px;
   }
-
+  
   .title-section__main-idea {
     height: 440px;
     margin-top: 40px;
@@ -1245,6 +1246,7 @@ body {
   }
 
   .inform__bar {
+
     display: none;
   }
 
@@ -1282,6 +1284,15 @@ body {
 
   .gallery-button {
     display: none;
+  }
+
+  #new-post-btn {
+    margin-right: 37px;
+  }
+}
+@media (max-width: 768px) {
+  #navbarToggler ul {
+    min-width: 100px;
   }
 }
 

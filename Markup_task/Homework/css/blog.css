@@ -588,7 +588,7 @@ body {
     display: none;
   }
 
-  .post .content .content__corner-icon {
+.post .content .content__corner-icon {
     display: block;
     top: 0;
   }

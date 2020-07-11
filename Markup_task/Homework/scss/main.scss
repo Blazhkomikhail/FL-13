@@ -939,8 +939,8 @@ body {
 		min-width: 50%;
 		height: 300px;
 	}
-	
-	.portfolio__slider {
+
+  .portfolio__slider {
 		width: 100%;
 		
 		.slider__wrapper {
@@ -1005,7 +1005,7 @@ body {
 		align-items: center;
 	}
 
-	.inform__bar {
+  .inform__bar {
 		display: none;
 	}
 
@@ -1049,5 +1049,16 @@ body {
 
 	.gallery-button {
 		display: none;
+	}
+
+	#new-post-btn {
+		margin-right: 37px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	#navbarToggler ul {
+		min-width: 100px;
 	}
 }
