@@ -246,40 +246,36 @@ function SliderSpeedTune() {
 		const minInterval = 500;
 
 		speedUpArrow.addEventListener('click', () => {
-			if (gallerySlider.config.interval >= maxInterval) {
+			if (this.config.interval >= maxInterval) {
 				speedIndicator.innerText = 'max interval';
 			} else {
-				speedIndicator.innerText = (gallerySlider.config.interval / msDivider).toFixed(1) + ' sec.';
-				gallerySlider.slowSlide();
+				this.increaseInt();
+				speedIndicator.innerText = (this.config.interval / msDivider).toFixed(1) + ' sec.';
 			}
 		})
 
 		speedDownArrow.addEventListener('click', () => {
-			if (gallerySlider.config.interval <= minInterval) {
+			if (this.config.interval <= minInterval) {
 				speedIndicator.innerText = 'min interval';
 			} else {
-				speedIndicator.innerText = (gallerySlider.config.interval / msDivider).toFixed(1) + ' sec.';
-				gallerySlider.speedUpSlide();
+				this.reduceInt();
+				speedIndicator.innerText = (this.config.interval / msDivider).toFixed(1) + ' sec.';
 			}
 		});
 	}
 
 	const intervalStep = 500;
 	
-	this.slowSlide = () => {
-			clearInterval(this.intervalId);
-			this.config.interval = this.config.interval + intervalStep;
-			this.cycle(this.config.direction);
+	this.increaseInt = () => {
+		clearInterval(this.intervalId);
+		this.config.interval += intervalStep;
+		this.cycle(this.config.direction);
 	}
 
-	this.speedUpSlide = () => {
-		if (this.config.interval - intervalStep < intervalStep) {
-			this.config.interval = intervalStep;
-		} else {
+	this.reduceInt = () => {
 		clearInterval(this.intervalId);
-			this.config.interval = this.config.interval - intervalStep;
-			this.cycle(this.config.direction);
-		}
+		this.config.interval -= intervalStep;
+		this.cycle(this.config.direction);
 	}
 
 	appendIntervalNumber();

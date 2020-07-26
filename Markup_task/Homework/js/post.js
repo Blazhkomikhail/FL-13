@@ -1,22 +1,32 @@
-const renderArticle = ({type, image, title, author, date, description, quote}) => {
-	const addImage = () => {
-		if (type === 'Text' || !type) {
+class FullPost {
+	constructor({type, image, title, author, date, description, quote}) {
+		this.type = type;
+		this.image = image;
+		this.title = title;
+		this.author = author;
+		this.date = date;
+		this.description = description;
+		this.quote = quote;
+	}
+
+	addImage() {
+		if (this.type === 'Text' || !this.type) {
 			return '';
 		} else {
 			return `
-			<div class=" ${type === 'Video' ? 'post__image-wrap post__image-wrap--video p-0' : 'post__image-wrap p-0'}">
-				<img src=${image || 'https://bit.ly/3gssa2f'} alt="Post image">
+			<div class=" ${this.type === 'Video' ? 'post__image-wrap post__image-wrap--video p-0' : 'post__image-wrap p-0'}">
+				<img src=${this.image || 'https://bit.ly/3gssa2f'} alt="Post image">
 			</div>
 			`
 		}
 	}
 
-	const addQuote = () => {
-		if (quote) {
+	addQuote() {
+		if (this.quote) {
 			return `
 			<div class="post__blockquote">
 				<span class="post__rectangle"></span>
-				<p class="post__text post__text--blockquote">${quote}</p>
+				<p class="post__text post__text--blockquote">${this.quote}</p>
 			</div>
 			`
 		} else {
@@ -24,42 +34,50 @@ const renderArticle = ({type, image, title, author, date, description, quote}) =
 		}
 	}
 
-	const calcReadTime = () => {
+	calcReadTime() {
 		const wordsNum = 120;
-		return Math.ceil(description.split(' ').length / wordsNum);
+		return Math.ceil(this.description.split(' ').length / wordsNum);
 	}
 
-	return	`
-		<h2 class="post__title">${title}</h2>
-		<div class="post__headline">
-			<span class="post__avatar">
-				<img src="img/blogs-page/Group/Sarah.png" alt="Avatar image">
-			</span>
-			<div class="post__info-wrap">
-				<span class="post__name">${author}</span>
-				<div class="post__info info">
-					<span class="info__date">${date}</span>
-					<span class="info__dot"></span>
-					<span class="info__read-time">${calcReadTime()} min read</span>
-					<span class="info__dot"></span>
-					<span class="info__comments-icon"></span>
-					<span class="info__comments">4</span>
-					<span class="info__stars">
-			<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-full.svg" class="info__star" alt="Star image">
-			<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
-			<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
-			<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
-			<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
-					</span>
+	getContent() {
+		return	`
+			<h2 class="post__title">${this.title}</h2>
+			<div class="post__headline">
+				<span class="post__avatar">
+					<img src="img/blogs-page/Group/Sarah.png" alt="Avatar image">
+				</span>
+				<div class="post__info-wrap">
+					<span class="post__name">${this.author}</span>
+					<div class="post__info info">
+						<span class="info__date">${this.date}</span>
+						<span class="info__dot"></span>
+						<span class="info__read-time">${this.calcReadTime()} min read</span>
+						<span class="info__dot"></span>
+						<span class="info__comments-icon"></span>
+						<span class="info__comments">4</span>
+						<span class="info__stars">
+				<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-full.svg" class="info__star" alt="Star image">
+				<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
+				<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
+				<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
+				<img src="img/UI-Kit-module-8/atoms/icon/a-icon-star-empty.svg" class="info__star" alt="Star image">
+						</span>
+					</div>
 				</div>
 			</div>
-		</div>
-		${ addImage() }
-		${type === 'Audio' ? '<audio class="post__audio" controls src="#"></audio>' : ''}
-		<p class="post__text">${description}</p>
-		${ addQuote() }
-	`
-};
+			${this.addImage()}
+			${this.type === 'Audio' ? '<audio class="post__audio" controls src="#"></audio>' : ''}
+			<p class="post__text">${this.description}</p>
+			${this.addQuote()}
+		`
+	}
+
+	static renderContent(article) {
+		const container = document.getElementById('post-content');
+		const post = new this(article);
+		container.innerHTML = post.getContent();
+	};
+}
 
 const checkImages = () => {
 	const images = document.querySelectorAll('img');
@@ -71,11 +89,6 @@ const checkImages = () => {
 		e.target.src = 'https://bit.ly/3gssa2f';
 	}
 }
-
-const renderContent = article => {
-  const container = document.getElementById('post-content');
-  container.innerHTML = renderArticle(article)
-};
 
 const fetchArticle = () => {
 	const mainURL = 'http://localhost:3000';
@@ -95,18 +108,24 @@ const fetchArticle = () => {
 			}
 			throw new Error(parsedArticle.message);
 		})
-		.then(art => {
-			renderContent(art);
+		.then(article => {
+			FullPost.renderContent(article);
 			checkImages();
 		})
 		.catch(error => {
 			console.log(error.message);
-			window.location.href = '../homework/index.html'
+			window.location.href = '../homework/index.html';
 		})
 };
 
 const main = () => {
-   fetchArticle();
+	fetchArticle();
+
+	const newPostButton = document.getElementById('new-post-btn');
+	function openNewPostPage() {
+		window.location.href = './newpostpage.html';
+	}
+	newPostButton.addEventListener('click', openNewPostPage);
 };
 
 document.addEventListener('DOMContentLoaded', main);
