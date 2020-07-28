@@ -29,9 +29,9 @@ class Post {
 			return '';
 		} else {
 			return `
-			<div class="post__image-wrap ${this.type === 'Video' ? 'post__image-wrap--video': ''} col-lg-6 p-0">
-				<img src=${this.image || 'https://bit.ly/31wy1Q1'} class="post__image card-img" alt="${this.type || ''} Picture">
-			</div>
+	<div class="post__image-wrap ${this.type === 'Video' ? 'post__image-wrap--video': ''} col-lg-6 p-0">
+	<img src=${this.image || 'https://bit.ly/31wy1Q1'} class="post__image card-img" alt="${this.type || ''} Picture">
+	</div>
 			`
 		}
 	}
@@ -45,7 +45,8 @@ class Post {
 		return	`
 			<div class="post post--${this.type ? this.type.toLowerCase() : 'text'} row">
 				${this.addImage()}
-				<div class="${this.type === 'Text' ? 'content--text card-body' : 'post__content content col-lg-6 card-body'}">
+				<div class="${this.type === 'Text' ? 
+				'content--text card-body' :'post__content content col-lg-6 card-body'}">
 					<div class="content__headline">
 						<span class="content__avatar">
 							<img src="img/blogs-page/post/description/neil.png" alt="Avatar image">
@@ -71,12 +72,14 @@ class Post {
 					</div> 
 					<h5 class="content__title">${this.title || ''}</h5>
 					${this.type === 'Audio' ? '<audio class="content__audio" controls src="#"></audio>' : ''}
-					<p class="content__text${this.type === 'Text' ? '--description' : ''}">${this.cutDescription() || ''}</p>
-					<button type="button" class="button button-lg button--blog-post" post-id=${this.id}>Read more</button>
+					<p class="content__text${this.type === 'Text' ? '--description' : ''}">
+					${this.cutDescription() || ''}</p>
+			<button type="button" class="button button-lg button--blog-post" post-id=${this.id}>Read more</button>
 					<div class="content__corner-icon content__corner-icon--${this.type 
 						? this.type.toLowerCase() : 'text'}" id="corner-icon"></div>
 				</div>
-				<div class="content__corner-icon content__corner-icon--${this.type ? this.type.toLowerCase() : 'text'}"></div>
+				<div class="content__corner-icon content__corner-icon--${this.type ? 
+					this.type.toLowerCase() : 'text'}"></div>
 			</div>
 		`
 	}

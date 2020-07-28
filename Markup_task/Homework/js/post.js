@@ -14,9 +14,9 @@ class FullPost {
 			return '';
 		} else {
 			return `
-			<div class=" ${this.type === 'Video' ? 'post__image-wrap post__image-wrap--video p-0' : 'post__image-wrap p-0'}">
-				<img src=${this.image || 'https://bit.ly/3gssa2f'} alt="Post image">
-			</div>
+	<div class=" ${this.type === 'Video' ? 'post__image-wrap post__image-wrap--video p-0' : 'post__image-wrap p-0'}">
+		<img src=${this.image || 'https://bit.ly/3gssa2f'} alt="Post image">
+	</div>
 			`
 		}
 	}
@@ -76,7 +76,7 @@ class FullPost {
 		const container = document.getElementById('post-content');
 		const post = new this(article);
 		container.innerHTML = post.getContent();
-	};
+	}
 }
 
 const checkImages = () => {
